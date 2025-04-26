@@ -224,7 +224,7 @@
         </div>
 
     </nav>
-    
+
     <div class="container">
     </div>
 
@@ -235,6 +235,22 @@
     </footer>
 
     <script>
+        const container = document.querySelector('.container');
+        const numberOfImages = 52; // 圖片總數
+
+        for (let i = 1; i <= numberOfImages; i++) {
+            const imageItem = document.createElement('div');
+            imageItem.classList.add('image-item');
+
+            const img = document.createElement('img');
+            // 根據你的圖片檔案命名規則來設定圖片的路徑
+            img.src = `image/image (${i}).jpg`;
+            img.alt = `圖片 ${i}`; // 為圖片添加替代文字，有助於 SEO 和無障礙瀏覽
+
+            imageItem.appendChild(img);
+            container.appendChild(imageItem);
+        }
+
         const navbarToggler = document.querySelector('.navbar-toggler');
         const mobileMenu = document.querySelector('.mobile-menu');
 
