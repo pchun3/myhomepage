@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -12,9 +11,8 @@
     <style>
         /* CSS 樣式將放在這裡 */
         body {
-            font-family: sans-serif;
             margin: 0;
-            background-color: #ffb923;
+            background: linear-gradient(to right, #9CD08F, #ADD8E6); /* 淺綠色到淺藍色漸層 */
             /* display: flex; */
             /* flex-direction: column; */
             align-items: center;
@@ -39,7 +37,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width: 100%; /* 修改為 100% */
+            width: 100%;
+            /* 修改為 100% */
             max-width: 800px;
             margin: 0 auto;
         }
@@ -49,7 +48,7 @@
             color: #fff;
             font-family: 'Pacifico';
             text-decoration: none;
-            
+
         }
 
         .navbar-toggler {
@@ -59,7 +58,8 @@
             font-size: 1.5em;
             cursor: pointer;
             padding: 0;
-            display: none; /* 預設隱藏漢堡按鈕 */
+            display: none;
+            /* 預設隱藏漢堡按鈕 */
         }
 
         .navbar-menu {
@@ -68,6 +68,7 @@
             justify-content: flex-end;
             max-width: 800px;
             margin: 0 auto;
+            font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
         }
 
         .navbar-nav {
@@ -90,6 +91,25 @@
 
         .nav-link:hover {
             color: #f4f4f4;
+        }
+
+        /* 新增的樣式 */
+        .mobile-menu {
+            display: none;
+            /* 預設隱藏手機版選單 */
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background-color: #333;
+            /* 手機版選單背景色 */
+        }
+
+        .mobile-menu li {
+            padding: 10px 20px;
+            text-align: center;
         }
 
         main {
@@ -118,6 +138,7 @@
             width: 75%; /* 與主要內容寬度一致 */
             max-width: 800px; /* 與主要內容最大寬度一致 */
             text-align: center;
+            font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
         }
 
         .hero-section {
@@ -130,6 +151,12 @@
             justify-content: center;
             align-items: center;
             color: #ffffff; /* 設定文字顏色 */
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .hero-content {
@@ -157,13 +184,8 @@
 
         .about-me {
             font-size: 4em;
-            color: #fff;
+            color: #000;
             font-family: 'Pacifico', cursive; /* 使用 Pacifico 字體，cursive 是備用字體 */
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
 
         .personal-info-container {
@@ -192,8 +214,9 @@
         .info-text {
             text-align: left; /* 文字靠左對齊 */
             line-height: 1.6;
-            color: #555;
+            color: #000;
             font-size: 1.4em; /* 將字體大小設定為 1.1 倍的預設大小 */
+            font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
         }
 
         .links-container {
@@ -233,9 +256,10 @@
 
         .link-box a {
             text-decoration: none;
-            color: #333;
+            color: #000;
             display: block;
             text-align: center; /* 確保連結內的文字也置中 */
+            font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
         }
 
         /* 響應式設計 */
@@ -251,26 +275,22 @@
             }
 
             .navbar-menu {
-                display: none; /* 小螢幕隱藏連結 */
-                position: absolute;
-                top: 60px; /* 在導覽列下方顯示 */
-                left: 0;
-                width: 100%;
-                background-color: #333;
-                flex-direction: column;
-                align-items: flex-start;
+                display: none;
+                /* 隱藏原有的選單 */
             }
 
             .navbar-toggler {
-                display: block; /* 小螢幕顯示漢堡按鈕 */
-                right: 10px;
+                display: block;
+                /* 顯示漢堡按鈕 */
             }
 
-            .nav-item {
-                margin: 0;
-                padding: 10px 50px;
+            .mobile-menu {
+                display: none;
+                /* 顯示手機版選單 */
+                position: absolute;
+                top: 60px;
+                left: 0;
                 width: 100%;
-                text-align: center;
             }
         }
     </style>
@@ -280,29 +300,43 @@
 
     <nav class="navbar">
         <div class="navbar-container">
-            <a href="index.html" class="navbar-brand">chun</a>
+            <a href="#hero" class="navbar-brand">chun</a>
 
             <button class="navbar-toggler">
                 <span>&#9776;</span>
             </button>
         </div>
-            
+
         <div class="navbar-menu">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a href="index.html" class="nav-link">首頁</a>
                 </li>
                 <li class="nav-item">
-                    <a href="test.html" class="nav-link">興趣何倫碼</a>  </li>
+                    <a href="test.html" class="nav-link">興趣何倫碼</a>
+                </li>
                 <li class="nav-item">
-                    <a href="me.html" class="nav-link">自傳履歷</a>  </li>
+                    <a href="me.html" class="nav-link">自傳履歷</a>
+                </li>
                 <li class="nav-item">
-                    <a href="job.html" class="nav-link">興趣之相關工作</a>  </li>
+                    <a href="job.html" class="nav-link">興趣之相關工作</a>
+                </li>
                 <li class="nav-item">
-                    <a href="dog.html" class="nav-link">My Lady</a>  </li>        
+                    <a href="dog.html" class="nav-link">My Lady</a>
+                </li>
             </ul>
         </div>
-        
+
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="index.html" class="nav-link">首頁</a></li>
+                <li><a href="test.html" class="nav-link">興趣何倫碼</a></li>
+                <li><a href="me.html" class="nav-link">自傳履歷</a></li>
+                <li><a href="job.html" class="nav-link">興趣之相關工作</a></li>
+                <li><a href="dog.html" class="nav-link">My Lady</a></li>
+            </ul>
+        </div>
+
     </nav>
 
     <div class="hero-section">
@@ -366,15 +400,33 @@
     </footer>
     
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const navbarToggler = document.querySelector('.navbar-toggler');
-            const navbarMenu = document.querySelector('.navbar-menu');
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        const navbarMenu = document.querySelector('.navbar-menu');
+        const mobileMenu = document.querySelector('.mobile-menu'); // 確保選到 mobile-menu
+        const navLinks = document.querySelectorAll('.mobile-menu .nav-link'); // 選取手機選單中的連結
 
-            navbarToggler.addEventListener('click', function() {
-                navbarMenu.style.display = navbarMenu.style.display === 'flex' ? 'none' : 'flex';
-            });
+        navbarToggler.addEventListener('click', function() {
+            if (mobileMenu.style.display === 'block') {
+                closeNav();
+            } else {
+                openNav();
+            }
         });
-    </script>    
+
+        function openNav() {
+            mobileMenu.style.display = 'block';
+        }
+
+        function closeNav() {
+            mobileMenu.style.display = 'none';
+        }
+
+        // 點擊連結後關閉選單
+        navLinks.forEach(link => {
+            link.addEventListener('click', closeNav);
+        });
+    </script>
+
 </body>
 
 
